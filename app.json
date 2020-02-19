@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "FUN",
+    "slug": "FunApp",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#D96B67"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.funLogic.fun",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.funLogic.fun",
+      "versionCode": 1
+    }
+  }
+}
