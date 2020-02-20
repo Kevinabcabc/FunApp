@@ -11,8 +11,8 @@ import { observer, inject } from 'mobx-react'
 
 
 interface Props {
-    store : any,
-    data: any
+    store? : any,
+    data?: any
 }
 
 @inject('store') @observer
@@ -22,8 +22,6 @@ componentDidMount(){
     
 }
 ToNewsDetail(){
-    // console.log(this.props.store.navigation);
-    console.log(this.props.data.newsId);
     if(this.props.data.videoList){
         this.props.store.navigation.navigate('videoDetail',{url: this.props.data.videoList[0]})
     }else {
@@ -35,8 +33,8 @@ ToNewsDetail(){
       const data = this.props.data;
       
     return (
-    <TouchableWithoutFeedback onPress={this.ToNewsDetail.bind(this)}>
-        <View style={styles.container}>
+    <TouchableWithoutFeedback  key={data.postTime} onPress={this.ToNewsDetail.bind(this)}>
+        <View  key={data.postTime}  style={styles.container}>
             <Image style={styles.img} source={{uri: data.imgList?data.imgList[0]:shivraj}}></Image>
             <View style={styles.textWraper}>
                 <Text style={styles.title} numberOfLines={2}>{data.title}</Text>

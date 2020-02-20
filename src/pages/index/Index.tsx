@@ -68,7 +68,6 @@ export default class Index extends React.Component<Props,State> {
   }
   componentDidMount(){
     this.props.store.setDeviceIfIphoneX((this.state.DeviceName.indexOf('iPhone 11')===0)||(this.state.DeviceName.indexOf('iPhone X')===0))
-    // console.log(this.props.store.setNavigation);
     this.props.store.setNavigation(this.props.navigation)
   }
  
@@ -80,7 +79,7 @@ export default class Index extends React.Component<Props,State> {
          <StatusBar barStyle="light-content"  />
          {/* <Provider data={this.props.navigation}> */}
             {
-              this.state.tab===1?<Home/>:this.state.tab===2?<Tools navigation=""/>:this.state.tab===3?<Joke navigation="" />:<News navigation=""/>
+              this.state.tab===1?<Home/>:this.state.tab===2?<Tools/>:this.state.tab===3?<Joke/>:<News/>
             }
         {/* </Provider> */}
         <Footer style={{...styles.footer,...((this.state.DeviceName.indexOf('iPhone 11')===0)||(this.state.DeviceName.indexOf('iPhone X')===0))?{marginBottom: 20,height: 20}:{marginBottom: 0,}}}>

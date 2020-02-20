@@ -7,7 +7,7 @@ import {
 } from "native-base";
 import { inject, observer } from 'mobx-react'
 interface Props {
-    store: any
+    store?: any
 }
 
 
@@ -16,7 +16,6 @@ class Tools extends Component<Props> {
   goOtherRouteAction(id:string){
     switch (id) {
       case 'qianfeng':
-        console.log(this.props.store.navigation);
         this.props.store.navigation.push('qianfeng')
         break;
       default:

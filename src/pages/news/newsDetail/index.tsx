@@ -22,26 +22,19 @@ class NewsDetail extends Component<Props ,State> {
     }
   }
   async componentDidMount () {
-
-    console.log(this.props.route.params.newsId);
-    
     let data = await Get('https://www.mxnzp.com/api/news/details',{newsId:this.props.route.params.newsId})
-    console.log(data.data.images);
+
 
     let content = data.data.content
-    console.log(content);
     
     if(data.data.images){
         data.data.images.forEach((item,index)=>{
-            console.log(item.position);
-            console.log(item.imgSrc);
             content = content.replace(item.position,`<img width="100%" height="520" src="${item.imgSrc}" />`)
         })
     }
 
     
     content = `<div style="font-size:30px">${content}</div>`
-    console.log(content);
     this.setState({
         content: content
     })

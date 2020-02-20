@@ -25,7 +25,7 @@ interface State {
   videoList: []
 }
 interface Props {
-  store: any
+  store?: any
 }
 
 @inject('store') @observer
@@ -39,7 +39,6 @@ class NHListIcon extends Component<Props ,State> {
 
   async componentDidMount () {
     let data = await Get('https://www.mxnzp.com/api/news/types')
-    console.log(data.data);
     data = data.data.filter((item,index)=>{return item.typeId!==518 && item.typeId!==516 && item.typeId!==521})
     this.setState({
       videoList: data,
@@ -57,7 +56,7 @@ class NHListIcon extends Component<Props ,State> {
           {
             this.state.videoList.map(({typeId,typeName})=>{
               return (
-                <ListItem icon style={styles.ListItem} key={typeId} onPress={this.goDetailList.bind(this,typeId,typeName)}>
+                <ListItem icon  key={typeId} onPress={this.goDetailList.bind(this,typeId,typeName)}>
                   <Left>
                     <Button style={{ backgroundColor: "#FD3C2D" }}>
                       <Icon active name="paper" />

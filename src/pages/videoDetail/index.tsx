@@ -26,11 +26,6 @@ interface Props {
 @inject('store') @observer
 class NHListDivider extends Component<Props> {
 
-    componentDidMount(){
-        // console.log(this.props.route.params.url);
-        // console.log( this.props.store.getDevideIfIphoneX() );
-        
-    }
   render() {
     return (
       <Container style={styles.container}>

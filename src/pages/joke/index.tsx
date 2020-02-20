@@ -8,7 +8,7 @@ import {
 } from "native-base";
 import { inject, observer } from 'mobx-react'
 interface Props {
-    store: any
+    store?: any
 }
 import {Get} from '../../utils/http'
 
@@ -32,17 +32,13 @@ class Joke extends Component<Props,State> {
   }
   async goOtherRouteAction(pic?:string){
     if(this.state.inputVal===this.state.verifyCode){
-      console.log(1);
       if(pic==='pic'){
         this.props.store.navigation.push('eyepro')
         return
       }
       this.props.store.navigation.push('jokers')
     }else{
-      console.log(0);
       let data = await Get('https://www.mxnzp.com/api/verifycode/code?len=5&type=0')
-      console.log(data.data.verifyCodeImgUrl);
-      console.log(data.data.verifyCode);
       this.setState({
         verifyCodeImgUrl: data.data.verifyCodeImgUrl,
         verifyCode: data.data.verifyCode
@@ -51,8 +47,6 @@ class Joke extends Component<Props,State> {
   }
   async componentDidMount(){
     let data = await Get('https://www.mxnzp.com/api/verifycode/code?len=5&type=0')
-    console.log(data.data.verifyCodeImgUrl);
-    console.log(data.data.verifyCode);
     this.setState({
       verifyCodeImgUrl: data.data.verifyCodeImgUrl,
       verifyCode: data.data.verifyCode
@@ -62,7 +56,10 @@ class Joke extends Component<Props,State> {
     return (
       <Container style={styles.container}>
         <View style={styles.imgWraper}>
-          <Image source={{uri: this.state.verifyCodeImgUrl}} style={styles.image}></Image>
+          {
+            this.state.verifyCodeImgUrl?<Image source={{uri: this.state.verifyCodeImgUrl}} style={styles.image}></Image>:null
+
+          }
           <TextInput
             numberOfLines={1}
             onChangeText={text=>this.setState({inputVal: text})}

@@ -3,17 +3,10 @@ import { Platform,StyleSheet } from "react-native";
 import { WebView } from 'react-native-webview'
 import {
     Container,
-    Header,
-    Title,
     Content,
-    Button,
-    Icon,
     List,
     ListItem,
     Text,
-    Left,
-    Right,
-    Body
   } from "native-base";
 import {Get} from '../../../utils/http'
 
@@ -32,10 +25,8 @@ class Jokers extends Component<Props ,State> {
     }
   }
   async componentDidMount () {
-console.log(11111111111);
 
     let data = await Get('https://www.mxnzp.com/api/jokes/list',{page:1})
-    console.log(data.data.list);
 
     this.setState({
         jokerlist: data.data.list

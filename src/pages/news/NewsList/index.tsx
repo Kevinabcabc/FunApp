@@ -3,7 +3,7 @@ import { Platform,StyleSheet, FlatList ,Image} from "react-native";
 import {
   Container
 } from "native-base";
-const shivraj = require("../../../../assets/funLogo.png");
+const shivraj = require("../../../../assets/logo.png");
 import {Get} from '../../../utils/http'
 import NewsListItem from './newsListItem'
 interface State {
@@ -28,7 +28,6 @@ class NewsDetailList extends Component<Props ,State> {
     }
   async componentDidMount(){
       let data = await Get('https://www.mxnzp.com/api/news/list',{typeId:this.props.route.params.id,page:1})
-    //   console.log(data.data);
         
       this.setState({
         newsList: data.data,
@@ -36,12 +35,10 @@ class NewsDetailList extends Component<Props ,State> {
   }
   async onRefresh(){
     let data = await Get('https://www.mxnzp.com/api/news/list',{typeId:this.props.route.params.id,page:this.state.pages+1})
-    console.log(this.state.pages);
     this.setState({
         newsList: data.data,
         freshFlat: false,
       pages: this.state.pages+1
-      // videoList: [{title:1,data:'hello'},{title:2,data:'hihao'}],
     })
   }
   render() {
@@ -50,8 +47,8 @@ class NewsDetailList extends Component<Props ,State> {
             <FlatList
                 data={this.state.newsList}
                 renderItem={({item})=>{
-                    return <NewsListItem data={item}/>
-                }}  
+                    return <NewsListItem data={item} key={item.postTime}/>
+                }}
                 onRefresh = {this.onRefresh.bind(this)}
                 refreshing={this.state.freshFlat}
             >

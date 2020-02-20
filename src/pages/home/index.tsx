@@ -27,29 +27,20 @@ export default class FooterExample extends Component<Props,State> {
     videoList: [],
     freshFlat: false,
     page: 1,
-    // imgurl: ''
   }
   async componentDidMount () {
     
-      
-      
     let data = await Get('https://api.apiopen.top/getJoke',{page:1,count:9,type:'video'})
-    // console.log(data);
     this.setState({
       videoList: data.result,
-      // videoList: [{title:1,data:'hello'},{title:2,data:'hihao'}],
     })
   }
   async onRefresh(navigation){
-    // console.log(navigation);
-    // console.log(this.props.store.setNavigation);
     let data = await Get('https://api.apiopen.top/getJoke',{page:this.state.page+1,count:9,type:'video'})
-    // console.log(data);
     this.setState({
       videoList: data.result,
       freshFlat: false,
       page: ++this.state.page
-      // videoList: [{title:1,data:'hello'},{title:2,data:'hihao'}],
     })
   }
   render() {

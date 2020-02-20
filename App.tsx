@@ -57,11 +57,6 @@ export default class App extends React.Component<Props,State> {
       tab: tab,
     })
   }
-  componentDidMount(){
-
-    console.log(Device.modelName);
-    
-  }
  
   render() {
 

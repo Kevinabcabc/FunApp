@@ -34,8 +34,6 @@ class EyePro extends Component<Props ,State> {
   async componentDidMount () {
     
     let data = await Get('https://www.mxnzp.com/api/image/girl/list/random')
-    console.log(data.data[0].imageUrl);
-    console.log(11111111111);
 
     this.setState({
       eyelist: data.data
@@ -43,8 +41,6 @@ class EyePro extends Component<Props ,State> {
   }
 
   render() {
-    console.log(this.state.eyelist);
-    
     return (
       <Container style={styles.container}>
         {/* <Text>{this.state.eyelist[0]}</Text> */}

@@ -48,8 +48,6 @@ class VideoCover extends Component<Props,State> {
         this.setState({
             isPlay: false
         })
-        console.log(this.props.store.navigation);
-        // this.props.store.navigation.setOptions({ title: this.props })
         this.props.store.navigation.navigate('videoDetail',{url:this.props.videoUrl})
     }
   render() {
