@@ -32,7 +32,7 @@ import Jokers from './src/pages/joke/Jokes'
 import EyePro from './src/pages/joke/EyePro'
 const Stack = createStackNavigator()
 
-
+//meigemgeier 
 interface Props {
 
 }
